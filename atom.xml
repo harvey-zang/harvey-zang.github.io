@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Oh My Mad Blog</title>
+  
+  <subtitle>人生如逆旅，我亦是行人。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://harvey-zang.github.io/"/>
+  <updated>2020-03-05T02:09:14.294Z</updated>
+  <id>http://harvey-zang.github.io/</id>
+  
+  <author>
+    <name>Mad King</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google SRE 读书笔记 -- 分布式系统的监控</title>
+    <link href="http://harvey-zang.github.io/posts/e77168f6653bb6b9.html"/>
+    <id>http://harvey-zang.github.io/posts/e77168f6653bb6b9.html</id>
+    <published>2019-11-17T05:56:23.000Z</published>
+    <updated>2020-03-05T02:09:14.294Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5 id=&quot;监控&quot;&gt;&lt;a href=&quot;#监控&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Google SRE" scheme="http://harvey-zang.github.io/categories/Google-SRE/"/>
+    
+    
+      <category term="Google SRE" scheme="http://harvey-zang.github.io/tags/Google-SRE/"/>
+    
+      <category term="分布式系统监控" scheme="http://harvey-zang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openvpn部署与配置</title>
+    <link href="http://harvey-zang.github.io/posts/8568f93a02d542c8.html"/>
+    <id>http://harvey-zang.github.io/posts/8568f93a02d542c8.html</id>
+    <published>2019-10-24T12:50:23.000Z</published>
+    <updated>2020-03-05T02:09:14.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenVPN 是一个基于 OpenSSL 库的应用层 VPN 实现。和传统 VPN 相比，它的优点是简单易用。
+        
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="http://harvey-zang.github.io/categories/shell/"/>
+    
+    
+      <category term="sed" scheme="http://harvey-zang.github.io/tags/sed/"/>
+    
+      <category term="shell" scheme="http://harvey-zang.github.io/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mongodb副本集的分库与恢复操作</title>
+    <link href="http://harvey-zang.github.io/posts/e6d7c5c3586abd73.html"/>
+    <id>http://harvey-zang.github.io/posts/e6d7c5c3586abd73.html</id>
+    <published>2019-07-21T16:00:31.000Z</published>
+    <updated>2020-03-05T02:09:14.295Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Mongodb的维护工作中经常有分库的操作，需要将一个副本集集群拆分为两个，操作步骤一般是先扩展两个副本节点，然后再把这两个几点从旧集群中拆分出去，组成新的集群，然后删减多余的数据。&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Github" scheme="http://harvey-zang.github.io/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis 通过rdb文件分析内存</title>
+    <link href="http://harvey-zang.github.io/posts/ed64ad4a32f60d5f.html"/>
+    <id>http://harvey-zang.github.io/posts/ed64ad4a32f60d5f.html</id>
+    <published>2019-06-17T15:51:58.000Z</published>
+    <updated>2020-03-05T02:09:14.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Redis
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Github" scheme="http://harvey-zang.github.io/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Influxdb 收集 Nginx(Tengine)状态信息并在Grafana上展示（一）Tengine的配置</title>
+    <link href="http://harvey-zang.github.io/posts/8214efb11e945d28.html"/>
+    <id>http://harvey-zang.github.io/posts/8214efb11e945d28.html</id>
+    <published>2019-03-06T03:11:40.000Z</published>
+    <updated>2020-03-05T02:09:14.294Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h6
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Tengine" scheme="http://harvey-zang.github.io/tags/Tengine/"/>
+    
+      <category term="Nginx" scheme="http://harvey-zang.github.io/tags/Nginx/"/>
+    
+      <category term="Influxdb" scheme="http://harvey-zang.github.io/tags/Influxdb/"/>
+    
+      <category term="Grafana" scheme="http://harvey-zang.github.io/tags/Grafana/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zaibbix Preprocessing 预处理json</title>
+    <link href="http://harvey-zang.github.io/posts/447db89dfafcd0d8.html"/>
+    <id>http://harvey-zang.github.io/posts/447db89dfafcd0d8.html</id>
+    <published>2019-03-05T06:32:00.000Z</published>
+    <updated>2020-03-05T02:09:14.297Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h6 id=&quot;Zabbix-3-4版本更新了许多新功能，其中一个监控项功能Preprocessing，根据官方说明文档，在监控项收集的数据存储到数据库前，预先对数据进行处理。&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Zabbix" scheme="http://harvey-zang.github.io/tags/Zabbix/"/>
+    
+      <category term="Preprocessing" scheme="http://harvey-zang.github.io/tags/Preprocessing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell脚本与编程笔记</title>
+    <link href="http://harvey-zang.github.io/posts/63396f8432c139a8.html"/>
+    <id>http://harvey-zang.github.io/posts/63396f8432c139a8.html</id>
+    <published>2018-12-12T06:17:19.000Z</published>
+    <updated>2020-03-05T02:09:14.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;1-expr-命令&quot;&gt;&lt;a href=&quot;#1-expr-命令&quot; class=&quot;headerlink&quot; title=&quot;1. expr 命令&quot;&gt;&lt;/a&gt;1. expr
+        
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Github" scheme="http://harvey-zang.github.io/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://harvey-zang.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB 修改副本集名称</title>
+    <link href="http://harvey-zang.github.io/posts/d5cc6ffb1555a830.html"/>
+    <id>http://harvey-zang.github.io/posts/d5cc6ffb1555a830.html</id>
+    <published>2018-09-17T07:57:12.000Z</published>
+    <updated>2020-03-05T02:09:14.295Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5
+        
+      
+    
+    </summary>
+    
+      <category term="MongoDB" scheme="http://harvey-zang.github.io/categories/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://harvey-zang.github.io/tags/MongoDB/"/>
+    
+      <category term="replicate" scheme="http://harvey-zang.github.io/tags/replicate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB从2.xx.xx升级到3.xx.xx版本</title>
+    <link href="http://harvey-zang.github.io/posts/2a3a458f30e97485.html"/>
+    <id>http://harvey-zang.github.io/posts/2a3a458f30e97485.html</id>
+    <published>2018-09-17T06:46:55.000Z</published>
+    <updated>2020-03-05T02:09:14.295Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、为什么要升级到3-X&quot;&gt;&lt;a href=&quot;#一、为什么要升级到3-X&quot; class=&quot;headerlink&quot; title=&quot;一、为什么要升级到3.X&quot;&gt;&lt;/a&gt;一、为什么要升级到3.X&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MongoDB
+        
+      
+    
+    </summary>
+    
+      <category term="MongoDB" scheme="http://harvey-zang.github.io/categories/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://harvey-zang.github.io/tags/MongoDB/"/>
+    
+      <category term="DB" scheme="http://harvey-zang.github.io/tags/DB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sed常用用法总结</title>
+    <link href="http://harvey-zang.github.io/posts/ae371d4e5e4ba81c.html"/>
+    <id>http://harvey-zang.github.io/posts/ae371d4e5e4ba81c.html</id>
+    <published>2018-09-09T17:37:23.000Z</published>
+    <updated>2020-03-05T02:09:14.294Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;a\  在指定行下面插入文本&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="shell" scheme="http://harvey-zang.github.io/categories/shell/"/>
+    
+    
+      <category term="sed" scheme="http://harvey-zang.github.io/tags/sed/"/>
+    
+      <category term="shell" scheme="http://harvey-zang.github.io/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx报错:『upstream response is buffered to a temporary file 』</title>
+    <link href="http://harvey-zang.github.io/posts/3a67d943aecf0d77.html"/>
+    <id>http://harvey-zang.github.io/posts/3a67d943aecf0d77.html</id>
+    <published>2018-09-09T14:24:29.000Z</published>
+    <updated>2020-03-05T02:09:14.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求与问题&quot;&gt;&lt;a href=&quot;#需求与问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://harvey-zang.github.io/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://harvey-zang.github.io/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx获取request_body</title>
+    <link href="http://harvey-zang.github.io/posts/e4dd5bbae50fa621.html"/>
+    <id>http://harvey-zang.github.io/posts/e4dd5bbae50fa621.html</id>
+    <published>2018-09-09T10:20:56.000Z</published>
+    <updated>2020-03-05T02:09:14.296Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求与问题&quot;&gt;&lt;a href=&quot;#需求与问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://harvey-zang.github.io/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://harvey-zang.github.io/tags/Nginx/"/>
+    
+      <category term="request_body" scheme="http://harvey-zang.github.io/tags/request-body/"/>
+    
+  </entry>
+  
+</feed>

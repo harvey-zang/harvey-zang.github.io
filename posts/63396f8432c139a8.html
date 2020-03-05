@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <link rel="stylesheet" type="text/css" href="http://madblog.cn/assets/waifu.css">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpg?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Github,Hexo,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. expr 命令 expr命令允许在命令行上处理数学表达式  例如  12root@madking:😂 ~ # expr 1 \| 21  expr 命令操作符记录   2、if 需要注意的 if [ -n “$var1” ];then 判断var1变量的长度是否为非零，为非零则返回true，为零则返回false -n 判断变量是否为空时，变量必须加引号，否则 if就会认为 [ -n ] 是">
+<meta name="keywords" content="Github,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell脚本与编程笔记">
+<meta property="og:url" content="http://harvey-zang.github.io/posts/63396f8432c139a8.html">
+<meta property="og:site_name" content="Oh My Mad Blog">
+<meta property="og:description" content="1. expr 命令 expr命令允许在命令行上处理数学表达式  例如  12root@madking:😂 ~ # expr 1 \| 21  expr 命令操作符记录   2、if 需要注意的 if [ -n “$var1” ];then 判断var1变量的长度是否为非零，为非零则返回true，为零则返回false -n 判断变量是否为空时，变量必须加引号，否则 if就会认为 [ -n ] 是">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-05T02:09:14.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell脚本与编程笔记">
+<meta name="twitter:description" content="1. expr 命令 expr命令允许在命令行上处理数学表达式  例如  12root@madking:😂 ~ # expr 1 \| 21  expr 命令操作符记录   2、if 需要注意的 if [ -n “$var1” ];then 判断var1变量的长度是否为非零，为非零则返回true，为零则返回false -n 判断变量是否为空时，变量必须加引号，否则 if就会认为 [ -n ] 是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://harvey-zang.github.io/posts/63396f8432c139a8.html">
+
+
+
+
+
+  <title>shell脚本与编程笔记 | Oh My Mad Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/harvey-zang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Oh My Mad Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">人生如逆旅，我亦是行人。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://harvey-zang.github.io/posts/63396f8432c139a8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mad King">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1539151696&di=7e7522a3912191d49079c7bfc7173f79&src=http%3A%2F%2Fn1.itc.cn%2Fimg8%2Fwb%2Fsmccloud%2Frecom%2F2015%2F04%2F24%2F142980990481836394.JPEG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oh My Mad Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">shell脚本与编程笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T14:17:19+08:00">
+                2018-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/63396f8432c139a8.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/posts/63396f8432c139a8.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+            <span>热度: </span><span id="busuanzi_value_page_pv"></span><span>℃</span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-expr-命令"><a href="#1-expr-命令" class="headerlink" title="1. expr 命令"></a>1. expr 命令</h3><ul>
+<li><p>expr命令允许在命令行上处理数学表达式</p>
+<ul>
+<li>例如</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@madking:😂 ~ # expr 1 \| 2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>expr 命令操作符记录</p>
+</li>
+</ul>
+<h3 id="2、if-需要注意的"><a href="#2、if-需要注意的" class="headerlink" title="2、if 需要注意的"></a>2、if 需要注意的</h3><ul>
+<li>if [ -n “$var1” ];then<ul>
+<li>判断var1变量的长度是否为非零，为非零则返回true，为零则返回false</li>
+<li>-n 判断变量是否为空时，变量必须加引号，否则 if就会认为 [ -n ] 是一个字符串，这样 if [ -n ],总会进入判断。、</li>
+</ul>
+</li>
+<li><p>if [ -z “$var1” ];then</p>
+<ul>
+<li>判断var1变量的长度是否为零，为零则返回true，为非零则返回flase</li>
+</ul>
+</li>
+<li><p>if [ ‘aaa’ &gt; ‘bbb’ ];then</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@madking:😂 ~ # if [ 'aaa' &gt; 'bbb' ];then</span><br><span class="line"><span class="meta">then&gt;</span><span class="bash"> <span class="built_in">echo</span> yes</span></span><br><span class="line"><span class="meta">then&gt;</span><span class="bash"> <span class="keyword">fi</span></span></span><br><span class="line">yes</span><br><span class="line">root@madking:😂 ~ # ls bbb</span><br><span class="line">bbb</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>单中括号里的大于小于号，需要进行转义，否则就会当成重定向，if的判断里’aaa’本来比’bbb’小，不会输出yes。但是因为实际是执行了重定向，新生成了bbb文件，执行是成功的，$?=0，所以实际是输出了yes，并且在当前目录生称了bbb文件。</p>
+</li>
+<li><p>双括号 (( ))</p>
+<ul>
+<li>双括号允许在比较过程中使用高级的数学表达式</li>
+<li>var++ val– ++val –val ! ~ ** &lt;&lt; &gt;&gt; &amp; | &amp;&amp; || 等</li>
+</ul>
+</li>
+<li><p>双方括号命令提供了针对字符串比较的高级特性，除了标准字符串比较，还提供了模式匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、脚本变量"><a href="#3、脚本变量" class="headerlink" title="3、脚本变量"></a>3、脚本变量</h3><ul>
+<li>脚本获取参数 $1-$9,${10},${11},大于9用大括号</li>
+<li>$0参数获取shell在命令行启动的脚本名</li>
+<li>./test.sh 执行则$0为 ./test.sh</li>
+<li>获取文件名称使用 basename $0</li>
+<li>$# 参数总个数</li>
+<li>获取最后一个参数不能用</li>
+<li>$* 和 $@ 都表示所有命令行参数，但是$* 会将所有参数当成一个单词，而$@会将每个参数当做一个单词，具体表现在for循环时，$*会输出一行整体参数，$@会每行输出一个参数。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test12.sh </span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> testing $* and <span class="variable">$@</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line">echoM</span><br><span class="line">count=1</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">for param in "$*"</span><br><span class="line">do</span><br><span class="line">   echo "\$* Parameter #$count = $param"</span><br><span class="line">   count=$[ $count + 1 ]</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">echo</span><br><span class="line">count=1</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">for param in "$@"</span><br><span class="line">do</span><br><span class="line">   echo "\$@ Parameter #$count = $param"</span><br><span class="line">   count=$[ $count + 1 ]</span><br><span class="line">done</span><br><span class="line"><span class="meta">$</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./test12.sh rich barbara katie jessica</span></span><br><span class="line"><span class="meta">$</span><span class="bash">* Parameter <span class="comment">#1 = rich barbara katie jessica</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">@ Parameter <span class="comment">#1 = rich</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">@ Parameter <span class="comment">#2 = barbara</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">@ Parameter <span class="comment">#3 = katie</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">@ Parameter <span class="comment">#4 = jessica</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>重定向</p>
+<ul>
+<li>临时重定向，echo ‘this is an error’ &gt;&amp;2</li>
+<li><p>永久重定向，exec 2&gt;testerror</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test10</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> redirecting all output to a file</span></span><br><span class="line">exec 1&gt;testout</span><br><span class="line">echo "This is a test of redirecting all output"</span><br><span class="line">echo "from a script to another file."</span><br><span class="line">echo "without having to redirect every individual line"</span><br><span class="line"><span class="meta">$</span><span class="bash"> ./test10</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> cat testout</span></span><br><span class="line">This is a test of redirecting all output</span><br><span class="line">from a script to another file.</span><br><span class="line">without having to redirect every individual line</span><br><span class="line"><span class="meta">$</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>read 读取重定向后的输入，将文件重定向到输入中。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test12</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> redirecting file input</span></span><br><span class="line">exec 0&lt; testfile</span><br><span class="line">count=1</span><br><span class="line">while read line</span><br><span class="line">do</span><br><span class="line">   echo "Line #$count: $line"</span><br><span class="line">   count=$[ $count + 1 ]</span><br><span class="line">done</span><br><span class="line"><span class="meta">$</span><span class="bash"> ./test12</span></span><br><span class="line">Line #1: This is the first line.</span><br><span class="line">Line #2: This is the second line.</span><br><span class="line">Line #3: This is the third line.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件描述符的试用实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test15 9 <span class="comment">#!/bin/bash</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> redirecting input file descriptors</span></span><br><span class="line">exec 6&lt;&amp;0 10 exec 0&lt; testfile</span><br><span class="line">count=1 11 while read line;do</span><br><span class="line">  echo "Line #$count: $line"  </span><br><span class="line">  count=$[ $count + 1 ] 12</span><br><span class="line">done</span><br><span class="line">exec 0&lt;&amp;6</span><br><span class="line">read -p "Are you done now? " answer</span><br><span class="line">case $answer in </span><br><span class="line">  Y|y) echo "Goodbye";;</span><br><span class="line">  N|n) echo "Sorry, this is the end.";;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<ul>
+<li>该脚本展示了shell的描述符的重定向用例，在将0从屏幕的读取重定向到从文件中读取，读取完成后下文中如果需要再次试用0描述符从屏幕中读取则需要再次重定向回屏幕。脚本中试用了自定义的6描述符来存储0描述符修改前的状态。</li>
+</ul>
+</li>
+<li><p>关闭文件描述符</p>
+<ul>
+<li>exec 3&gt;&amp;-</li>
+<li>要关闭文件描述符，将它重定向到特殊符号&amp;-。</li>
+</ul>
+</li>
+<li><p>列出打开的文件描述符</p>
+<ul>
+<li>lsof命令会列出整个Linux系统打开的所有文件描述符。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>tee命令相当于管道的一个T型接头。它将从STDIN过来的数据同时发往两处。一处是 STDOUT，另一处是tee命令行所指定的文件名。tee默认使用覆盖模式，如果想追加则需要添加参数-a。</p>
+</li>
+</ul>
+<h3 id="4、后台模式运行脚本"><a href="#4、后台模式运行脚本" class="headerlink" title="4、后台模式运行脚本"></a>4、后台模式运行脚本</h3><ul>
+<li>jobs查看分配给shell的作业<ul>
+<li>jobs命令可以查看分配给shell的作业。jobs命令会显示这两个已停止/运行中的作业，以及 它们的作业号和作业中使用的命令。</li>
+<li>要想查看作业的PID，可以在jobs命令中加入-l选项 jobs -l。</li>
+<li>jobs输出中带加号的是默认作业，带减号的会在当前默认作业即带加号的作业完成后成为默认作业。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>列出进程的PID以及作业号</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>只列出上次shell发出的通知后改变了状态的作业</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>只列出作业的PID</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>只列出运行中的作业</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>只列出已停止的作业</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>后台符&amp;运行的脚本会挂在当前的终端会话(类似pts/0)终端联系在一起。如果终端会话退出，那么后台进程也会随之退出。</li>
+<li><p>nohup命令运行了一个命令来阻断所有发给该进程的SIGHUP信号。这会在退出终端会话时阻止进程退出。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nohup ./test1.sh &amp;</span></span><br><span class="line">[1] 3856</span><br><span class="line"><span class="meta">$</span><span class="bash"> nohup: ignoring input and appending output to <span class="string">'nohup.out'</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nohup 默认会将该进程的STDOUT和STDERR的消息重定向到一个当前目录的nohup.out的文件中。</p>
+</li>
+<li>nohup 不加后台符&amp;程序并不会挂到后台，而且会阻塞当前会话。</li>
+<li>每个nohup xxxx  &amp; 都是一个后台运行的job，可以用jobs查看，当然也可以用fg + jobid 调到前台。</li>
+<li>将正在运行的进程停止、后台运行、前台运行<ul>
+<li>例如vim a.txt</li>
+<li>ctl + z 将vim停止运行，终端会跳出vim，展示当前会话shell</li>
+<li>bg 会将当前默认任务（job查看带+号的）放到后台运行</li>
+<li>fg 会将当前默认任务放到前台运行</li>
+<li>bg + jobid 将某一个任务放到后台运行</li>
+<li>fg + jobid 将某一个任务放到前台运行</li>
+</ul>
+</li>
+</ul>
+<h3 id="shell-高级编程"><a href="#shell-高级编程" class="headerlink" title="shell 高级编程"></a>shell 高级编程</h3><h3 id="shell脚本风格指南"><a href="#shell脚本风格指南" class="headerlink" title="shell脚本风格指南"></a>shell脚本风格指南</h3><ul>
+<li><p>所有的错误信息都应该被导向STDERR。</p>
+<ul>
+<li>这使得从实际问题中分离出正常状态变得更容易。推荐使用类似如下函数，将错误信息和其他状态信息一起打印出来。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">err() &#123;</span><br><span class="line">  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" &gt;&amp;2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if ! do_something; then</span><br><span class="line">  err "Unable to do_something"</span><br><span class="line">  exit "$&#123;E_DID_NOTHING&#125;"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="工作中遇到的"><a href="#工作中遇到的" class="headerlink" title="工作中遇到的"></a>工作中遇到的</h3><ul>
+<li>主机名不能用下划线 </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mad King
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://harvey-zang.github.io/posts/63396f8432c139a8.html" title="shell脚本与编程笔记">http://harvey-zang.github.io/posts/63396f8432c139a8.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Github/" rel="tag"> <i class="fa fa-tag"></i> Github</a>
+          
+            <a href="/tags/Hexo/" rel="tag"> <i class="fa fa-tag"></i> Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/d5cc6ffb1555a830.html" rel="next" title="MongoDB 修改副本集名称">
+                <i class="fa fa-chevron-left"></i> MongoDB 修改副本集名称
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/447db89dfafcd0d8.html" rel="prev" title="zaibbix Preprocessing 预处理json">
+                zaibbix Preprocessing 预处理json <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1539151696&di=7e7522a3912191d49079c7bfc7173f79&src=http%3A%2F%2Fn1.itc.cn%2Fimg8%2Fwb%2Fsmccloud%2Frecom%2F2015%2F04%2F24%2F142980990481836394.JPEG" alt="Mad King">
+            
+              <p class="site-author-name" itemprop="name">Mad King</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+          </div>
+          
+         <div style="width:100%; border-top:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd; margin-bottom:16px; padding-top:10px; text-align:center;">每日du英语<div id="edslogan"></div></div>
+
+         <div class="cus_weather" id="cus_weather">
+  <div class="cus_weather_tmp" id="cus_weather_tmp">-</div>
+  <div class="cus_weather_cell">
+    <div class="cus_weather_location" id="cus_weather_location">-</div>
+    <div class="cus_weather_cond_txt" id="cus_weather_cond_txt">-</div>
+    <div class="cus_weather_wind">
+      <span class="cus_weather_wind_dir" id="cus_weather_wind_dir">-</span>
+      <span class="cus_weather_wind_sc" id="cus_weather_wind_sc">0</span>级
+    </div>
+
+    <div class="cus_weather_air" id="cus_weather_air">
+      <span class="cus_weather_qlty" id="cus_weather_qlty">-</span>
+      <span class="cus_weather_aqi" id="cus_weather_aqi">0</span>
+    </div>
+  </div>
+</div>
+
+
+          
+
+          
+            <div class="links-of-author motion-element" style="margin:10px">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/harvey-zang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:harvey_dent@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Hodorrrrrrrr" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://douban.com/people/your-user-name" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-douban"></i>豆瓣</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/harvey-36-62" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+        </section></div>
+      
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-expr-命令"><span class="nav-number">1.</span> <span class="nav-text">1. expr 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、if-需要注意的"><span class="nav-number">2.</span> <span class="nav-text">2、if 需要注意的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、脚本变量"><span class="nav-number">3.</span> <span class="nav-text">3、脚本变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、后台模式运行脚本"><span class="nav-number">4.</span> <span class="nav-text">4、后台模式运行脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-高级编程"><span class="nav-number">5.</span> <span class="nav-text">shell 高级编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell脚本风格指南"><span class="nav-number">6.</span> <span class="nav-text">shell脚本风格指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作中遇到的"><span class="nav-number">7.</span> <span class="nav-text">工作中遇到的</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </aside></div>
+  
+
+
+        
+      </main></div>
+    
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mad King</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">12.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+<div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  <script>
+$(function(){
+  $.get('https://api.xdooi.com/motto_en?l=38').then(res=>{
+    $('#edslogan').html('<span style="font-size:14px; color:#666;">'+res.english +'</span><div style="font-size:12px; color:#999; transform:scale(0.8,0.8)">'+res.chinese+'</div>');
+  })
+})
+</script>
+
+  <script>
+$(function(){
+  $.get('https://api.xdooi.com/getWeather').then(res=>{
+    console.log(res);
+    $('#cus_weather_tmp').html(res.now_weather.tmp + '°');
+    $('#cus_weather_location').html(res.basic.parent_city);
+    $('#cus_weather_cond_txt').html(res.now_weather.cond_txt);
+    $('#cus_weather_wind_dir').html(res.now_weather.wind_dir);
+    $('#cus_weather_wind_sc').html(res.now_weather.wind_sc);
+    $('#cus_weather_qlty').html(res.now_air.qlty);
+    $('#cus_weather_aqi').html(res.now_air.aqi);
+    $('#cus_weather_air').css('color',res.now_air.color)
+    // $('#edslogan').html('<span style="font-size:14px; color:#666;">'+res.english +'</span><div style="font-size:12px; color:#999; transform:scale(0.8,0.8)">'+res.chinese+'</div>');
+  })
+})
+</script>
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'harvey-zang',
+            repo: 'gitment',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'fb53cfddb088e37c5c3d31eeda4da80baa3b872f',
+            
+                client_id: '7771ca49fb0fcd9f40b5'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+
+<div class="waifu">
+
+    <!-- 提示框 -->
+    <div class="waifu-tips"></div>
+
+    <!-- 看板娘画布 -->
+    <canvas id="live2d" class="live2d"></canvas>
+
+    <!-- 工具栏 -->
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
+
+</div>
+
+<script src="/assets/waifu-tips.js"></script>
+<script src="/assets/live2d.js"></script>
+
+<!-- 初始化看板娘，加载 waifu-tips.json -->
+<script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 5;                  // 默认模型 ID
+    live2d_settings['modelTexturesId'] = 1;          // 默认材质 ID
+    /* 在 initModel 前添加 */
+    initModel("http://madblog.cn/assets/waifu-tips.json")
+</script>
+
+</body>
+</html>
